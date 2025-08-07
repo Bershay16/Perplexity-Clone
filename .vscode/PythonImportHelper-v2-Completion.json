@@ -1,0 +1,71 @@
+[
+    {
+        "label": "lldb",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "lldb",
+        "description": "lldb",
+        "detail": "lldb",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "ChatBody",
+        "importPath": "pydantic_models.chat_body",
+        "description": "pydantic_models.chat_body",
+        "isExtraImport": true,
+        "detail": "pydantic_models.chat_body",
+        "documentation": {}
+    },
+    {
+        "label": "handle_new_rx_page",
+        "kind": 2,
+        "importPath": "ios.Flutter.ephemeral.flutter_lldb_helper",
+        "description": "ios.Flutter.ephemeral.flutter_lldb_helper",
+        "peekOfCode": "def handle_new_rx_page(frame: lldb.SBFrame, bp_loc, extra_args, intern_dict):\n    \"\"\"Intercept NOTIFY_DEBUGGER_ABOUT_RX_PAGES and touch the pages.\"\"\"\n    base = frame.register[\"x0\"].GetValueAsAddress()\n    page_len = frame.register[\"x1\"].GetValueAsUnsigned()\n    # Note: NOTIFY_DEBUGGER_ABOUT_RX_PAGES will check contents of the\n    # first page to see if handled it correctly. This makes diagnosing\n    # misconfiguration (e.g. missing breakpoint) easier.\n    data = bytearray(page_len)\n    data[0:8] = b'IHELPED!'\n    error = lldb.SBError()",
+        "detail": "ios.Flutter.ephemeral.flutter_lldb_helper",
+        "documentation": {}
+    },
+    {
+        "label": "ChatBody",
+        "kind": 6,
+        "importPath": "server.pydantic_models.chat_body",
+        "description": "server.pydantic_models.chat_body",
+        "peekOfCode": "class ChatBody(BaseModel):\n    query: str",
+        "detail": "server.pydantic_models.chat_body",
+        "documentation": {}
+    },
+    {
+        "label": "chat_endpoints",
+        "kind": 2,
+        "importPath": "server.main",
+        "description": "server.main",
+        "peekOfCode": "def chat_endpoints(body: ChatBody):\n    print(body.query)\n    return body.query",
+        "detail": "server.main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "server.main",
+        "description": "server.main",
+        "peekOfCode": "app = FastAPI()\n@app.post(\"/chat\")\ndef chat_endpoints(body: ChatBody):\n    print(body.query)\n    return body.query",
+        "detail": "server.main",
+        "documentation": {}
+    }
+]
